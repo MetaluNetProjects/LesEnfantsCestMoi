@@ -1,0 +1,61 @@
+#N canvas 561 140 757 679 10;
+#X obj 101 114 bng 30 250 50 0 \$0-b-snd \$0-b-rcv 1 10 15 0 14 -4034
+-1 -1;
+#X obj 138 114 hsl 60 30 0 1 0 0 \$0-time-snd \$0-time-rcv playing
+5 15 0 12 -241291 -241291 -1 0 1;
+#X obj 112 175 loadbang;
+#X obj 112 197 f \$2;
+#X obj 112 276 s \$0-b-rcv;
+#X obj 84 176 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 112 254 label \$1;
+#X obj 112 219 makefilename %s;
+#X obj 278 177 r CLIENT-fromserver;
+#X obj 373 208 route control;
+#X obj 278 301 == \$2;
+#X obj 278 347 sel 0 1;
+#X obj 278 415 s \$0-time-rcv;
+#X obj 109 321 r \$0-b-snd;
+#X obj 109 345 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 109 423 s CLIENT-toserver;
+#X obj 109 367 f \$2;
+#X obj 482 148 loadbang;
+#X obj 480 171 b;
+#X obj 462 152 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 531 180 r CLIENT-toserver;
+#X obj 531 219 route stop;
+#X obj 278 221 route son;
+#X obj 278 243 route playing stop;
+#X msg 312 275 -1;
+#X msg 301 369 color 15 15 22 \, label playing;
+#X msg 278 393 color 0 0 22 \, label stopped;
+#X obj 531 199 route son;
+#X msg 109 394 son play \$1;
+#X connect 2 0 3 0;
+#X connect 3 0 7 0;
+#X connect 5 0 3 0;
+#X connect 6 0 4 0;
+#X connect 7 0 6 0;
+#X connect 8 0 22 0;
+#X connect 8 0 9 0;
+#X connect 10 0 11 0;
+#X connect 11 0 26 0;
+#X connect 11 1 25 0;
+#X connect 13 0 14 0;
+#X connect 14 0 16 0;
+#X connect 16 0 28 0;
+#X connect 17 0 18 0;
+#X connect 19 0 18 0;
+#X connect 20 0 27 0;
+#X connect 21 0 18 0;
+#X connect 22 0 23 0;
+#X connect 23 0 10 0;
+#X connect 23 1 24 0;
+#X connect 24 0 10 0;
+#X connect 25 0 12 0;
+#X connect 26 0 12 0;
+#X connect 27 0 21 0;
+#X connect 28 0 15 0;
+#X coords 0 -1 1 1 102 45 1 100 100;
