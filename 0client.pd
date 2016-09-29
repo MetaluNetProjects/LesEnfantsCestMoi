@@ -1,7 +1,7 @@
-#N canvas 42 138 467 510 10;
+#N canvas 271 114 467 510 10;
 #X obj 16 48 cnv 15 260 350 empty empty SEQUENCE 100 12 0 14 -262130
 -66577 0;
-#N canvas 510 194 849 644 guts 0;
+#N canvas 483 114 849 644 guts 0;
 #X obj 69 30 PdClient CLIENT CLIENT;
 #X obj 334 158 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
@@ -14,7 +14,7 @@
 1;
 #X obj 134 124 r CLIENT-fromserver;
 #X obj 134 146 route fruitOK;
-#X obj 134 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 134 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X msg 365 454 son play \$1;
 #X msg 367 416 1;
@@ -23,7 +23,7 @@
 #X msg 436 355 2;
 #X msg 400 392 son play \$1 \, son loop 1;
 #X msg 598 378 son stop;
-#N canvas 6 74 450 300 test_connected 0;
+#N canvas 7 75 450 300 test_connected 0;
 #X obj 39 90 s CLIENT-toserver;
 #X obj 39 111 r CLIENT-fromserver;
 #X msg 39 67 Echo test;
@@ -39,7 +39,9 @@
 #X msg 78 217 1;
 #X obj 39 242 change;
 #X obj 39 267 tgl 15 0 \$0-CONNECTED empty CONNECTED 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
+#X obj 184 218 loadbang;
+#X msg 184 240 0;
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;
 #X connect 3 0 4 0;
@@ -53,8 +55,10 @@
 #X connect 10 0 12 0;
 #X connect 11 0 12 0;
 #X connect 12 0 13 0;
+#X connect 14 0 15 0;
+#X connect 15 0 13 0;
 #X restore 68 71 pd test_connected;
-#X obj 68 128 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 68 128 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 68 105 r \$0-CONNECTED;
 #X obj 68 323 s \$0-connected-can;
@@ -227,8 +231,8 @@
 #X connect 92 0 93 0;
 #X connect 94 1 90 0;
 #X restore 333 15 pd guts;
-#X obj 21 8 cnv 15 140 30 empty \$0-connected-can connecté 10 15 0
-14 -24198 -1 0;
+#X obj 21 8 cnv 15 140 30 empty \$0-connected-can non_connecté 10
+15 0 14 -233017 -1 0;
 #X obj 65 416 hsl 200 30 -1 1 0 0 \$0-speed-snd \$0-speed-rcv vitesse_moteur:0%
 5 15 0 12 -261234 -1 -1 0 1;
 #X obj 65 460 hsl 200 30 0 1 0 0 \$0-light-snd \$0-light-rcv lumière:0%
