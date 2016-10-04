@@ -1,4 +1,4 @@
-#N canvas 452 75 716 460 10;
+#N canvas 454 75 716 460 10;
 #X obj 3 9 cnv 15 550 350 empty empty SEQUENCE 100 12 0 14 -262130
 -66577 0;
 #X obj 28 13 bng 30 250 50 0 \$0-stopSeq-snd \$0-stopSeq-rcv STOP 1
@@ -33,7 +33,7 @@
 #X obj 359 152 seqb \$0 15;
 #X obj 7 359 cnv 15 670 100 empty empty Commande_live 20 12 0 14 -204800
 -66577 0;
-#N canvas 75 162 849 644 guts 1;
+#N canvas 77 158 849 644 guts 1;
 #X obj 69 30 PdClient CLIENT CLIENT;
 #X obj 334 158 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
@@ -261,7 +261,6 @@
 #X connect 77 0 80 0;
 #X connect 82 0 87 0;
 #X connect 83 1 84 0;
-#X connect 84 0 85 0;
 #X connect 85 0 86 0;
 #X connect 87 1 83 0;
 #X connect 88 0 5 0;
@@ -298,6 +297,6 @@ période:0.26s 5 15 0 12 -191407 -1 -1 0 1;
 #X obj 13 428 bng 30 250 50 0 \$0-stoplight-snd \$0-stoplight-rcv CUT
 5 15 0 12 -258113 -1 -1;
 #X obj 53 394 hsl 200 30 -1 1 0 0 \$0-speed-snd \$0-speed-rcv vitesse_moteur:0%
-5 15 0 12 -4034 -1 -1 9950 1;
+5 15 0 12 -4034 -1 -1 0 1;
 #X obj 513 366 cnv 15 140 30 empty \$0-connected-can connecté 10 15
 0 14 -24198 -1 0;
