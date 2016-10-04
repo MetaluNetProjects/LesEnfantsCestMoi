@@ -1,0 +1,3 @@
+1 MOTEUR 30 3 # à 1 seconde, moteur marche avant 30% en 3 seconde;
+10 MOTEUR 0 3;
+

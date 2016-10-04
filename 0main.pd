@@ -1,4 +1,4 @@
-#N canvas 439 154 997 690 10;
+#N canvas 439 151 997 690 10;
 #X declare -path Fraise -stdpath Fraise;
 #X declare -stdpath moonlib;
 #X declare -stdpath hcs;
@@ -388,6 +388,30 @@
 #X obj 605 527 ggee/shell;
 #X msg 631 490 ro;
 #X msg 596 489 rw;
+#N canvas 7 74 591 317 test-rw 0;
+#X obj 90 154 ggee/shell;
+#X msg 90 127 mount | grep /dev/mmcblk0p2 | cut -d' ' -f 6 | cut -c
+2-3;
+#X obj 90 181 route ro rw;
+#X msg 90 202 ro;
+#X msg 127 201 rw;
+#X obj 90 227 outlet;
+#X obj 90 98 metro 2000;
+#X obj 90 54 loadbang;
+#X obj 90 76 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 0;
+#X connect 6 0 1 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X restore 864 195 pd test-rw;
+#X obj 848 229 list prepend rorw;
+#X obj 896 264 print;
 #X connect 3 0 33 0;
 #X connect 4 0 5 0;
 #X connect 5 0 12 0;
@@ -470,3 +494,5 @@
 #X connect 97 4 79 0;
 #X connect 99 0 98 0;
 #X connect 100 0 98 0;
+#X connect 101 0 102 0;
+#X connect 102 0 86 0;

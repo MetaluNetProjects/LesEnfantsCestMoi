@@ -1,8 +1,8 @@
-#N canvas 315 151 669 575 10;
-#X obj 101 114 bng 30 250 50 0 \$0-b-snd \$0-b-rcv 2 10 15 0 14 -257985
+#N canvas 316 149 669 575 10;
+#X obj 101 114 bng 30 250 50 0 \$0-b-snd \$0-b-rcv 1 10 15 0 14 -257985
 -1 -1;
-#X obj 138 114 hsl 200 30 0 1 0 0 \$0-time-snd \$0-time-rcv play:000/007
-5 15 0 12 -241291 -1 -1 1706 1;
+#X obj 138 114 hsl 100 30 0 1 0 0 \$0-time-snd \$0-time-rcv stopped
+5 15 0 12 -262144 -262144 -1 0 1;
 #X obj 131 195 loadbang;
 #X obj 131 217 f \$2;
 #X obj 131 296 s \$0-b-rcv;
@@ -99,4 +99,4 @@
 #X connect 43 0 44 0;
 #X connect 44 0 45 0;
 #X connect 45 0 39 0;
-#X coords 0 -1 1 1 242 50 1 100 100;
+#X coords 0 -1 1 1 150 50 1 100 100;

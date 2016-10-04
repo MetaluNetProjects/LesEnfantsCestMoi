@@ -1,0 +1,4 @@
+1 MOTEUR 50 3 # à 1 seconde, moteur marche avant 30% en 3 seconde;
+10 MOTEUR 0 3 # à 10 seconde, moteur marche s'arrête en 3 secondes;
+
+

@@ -2,13 +2,12 @@
 0 MOTEUR 0 # arrêter moteur ;
 5 LUMIERE 50 8 # après 5s monter lumière à 50% en 8s ;
 7 MOTEUR 25 3 # 2s plus tard moteur monte vitesse à 25% en 3s ;
-16 SON SON1 # lancer le son1;
-16 SON LOOP ON # activer la lecture en boucle;
+16 SON PLAY 1 # lancer le son1;
+16 SON LOOP 1 # activer la lecture en boucle;
 18 MOTEUR 0 3 # à la seconde 18 le moteur d’arrête en 3s ;
 19 LUMIERE 100 # 1s plus tard lumière full d’un coup;
-19 REMUER 0.5 # en même temps remuer période 1/2 seconde;
+19 REMUER 0.5 # en même temps remuer avec une période  de 1/2 seconde;
 25 LUMIERE 0 30 # long fade down en 30s jusque noir;
 35 REMUER 0 # au cours du fade  arreter de remuer;
 55 SON STOP # quand fade fini arrêter son;
-
 

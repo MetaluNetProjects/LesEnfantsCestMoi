@@ -1,7 +1,39 @@
-#N canvas 272 112 467 510 10;
-#X obj 16 48 cnv 15 260 350 empty empty SEQUENCE 100 12 0 14 -262130
+#N canvas 452 75 716 460 10;
+#X obj 3 9 cnv 15 550 350 empty empty SEQUENCE 100 12 0 14 -262130
 -66577 0;
-#N canvas 484 112 849 644 guts 0;
+#X obj 28 13 bng 30 250 50 0 \$0-stopSeq-snd \$0-stopSeq-rcv STOP 1
+15 0 12 -257985 -1 -1;
+#X obj 524 12 cnv 15 150 350 empty empty SON 50 12 0 14 -204786 -66577
+0;
+#X obj 540 50 sonb \$0 1;
+#X obj 539 257 tgl 30 0 \$0-sonLoop-snd \$0-sonLoop-rcv loop 1 15 0
+10 -4034 -1 -1 0 1;
+#X obj 574 257 bng 30 250 50 0 \$0-sonStop-snd \$0-sonStop-rcv STOP
+1 15 0 12 -4034 -1 -1;
+#X obj 539 100 sonb \$0 2;
+#X obj 539 151 sonb \$0 3;
+#X obj 11 49 seqb \$0 1;
+#X obj 11 100 seqb \$0 2;
+#X obj 11 151 seqb \$0 3;
+#X obj 11 202 seqb \$0 4;
+#X obj 11 253 seqb \$0 5;
+#X obj 11 303 seqb \$0 6;
+#X obj 185 49 seqb \$0 7;
+#X obj 185 100 seqb \$0 8;
+#X obj 185 151 seqb \$0 9;
+#X obj 185 202 seqb \$0 10;
+#X obj 185 253 seqb \$0 11;
+#X obj 185 304 seqb \$0 12;
+#X obj 359 50 seqb \$0 13;
+#X obj 359 101 seqb \$0 14;
+#X obj 359 254 seqb \$0 17;
+#X obj 359 305 seqb \$0 18;
+#X obj 539 201 sonb \$0 4;
+#X obj 359 203 seqb \$0 16;
+#X obj 359 152 seqb \$0 15;
+#X obj 7 359 cnv 15 670 100 empty empty Commande_live 20 12 0 14 -204800
+-66577 0;
+#N canvas 75 162 849 644 guts 1;
 #X obj 69 30 PdClient CLIENT CLIENT;
 #X obj 334 158 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
@@ -16,12 +48,6 @@
 #X obj 134 146 route fruitOK;
 #X obj 134 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X msg 365 454 son play \$1;
-#X msg 367 416 1;
-#X msg 401 417 2;
-#X msg 402 354 1;
-#X msg 436 355 2;
-#X msg 400 392 son play \$1 \, son loop 1;
 #X msg 598 378 son stop;
 #N canvas 7 75 450 300 test_connected 0;
 #X obj 39 90 s CLIENT-toserver;
@@ -81,7 +107,7 @@
 #X msg 67 524 label vitesse_moteur:\$1%;
 #X obj 462 32 t b b;
 #X msg 473 88 0;
-#X obj 475 116 s \$0-speed-rcv;
+#X obj 487 115 s \$0-speed-rcv;
 #X obj 67 404 route speed light;
 #X obj 204 556 s \$0-light-rcv;
 #X obj 67 549 s \$0-speed-rcv;
@@ -98,14 +124,13 @@
 #X obj 262 13 r \$0-bouge-snd;
 #X obj 299 49 r \$0-bougeperiod-snd;
 #X obj 262 77 pack f 0.5;
-#X obj 488 477 r \$0-bougeperiod-snd;
-#X msg 489 530 label période:\$1s;
-#X obj 489 552 s \$0-bougeperiod-rcv;
-#X obj 489 509 makefilename %2.2f;
+#X obj 501 520 r \$0-bougeperiod-snd;
+#X msg 501 564 label période:\$1s;
+#X obj 501 586 s \$0-bougeperiod-rcv;
+#X obj 501 543 makefilename %2.2f;
 #X msg 262 100 bouge \$1 \$2;
 #X obj 387 81 sel 1;
 #X obj 262 54 t f f;
-#X obj 227 380 route speed light bouge;
 #X msg 371 551 set \$1;
 #X obj 373 530 unpack f f;
 #X obj 355 510 t a a;
@@ -130,148 +155,149 @@
 #X obj 630 64 s \$0-sonStop-rcv;
 #X obj 612 88 s \$0-stopSeq-rcv;
 #X obj 479 343 s \$0-bouge-rcv;
-#X obj 468 139 s \$0-light-rcv;
+#X obj 728 161 s \$0-light-rcv;
 #X obj 659 418 r \$0-speed-snd;
 #X obj 690 461 t b b;
 #X obj 722 483 del 500;
 #X msg 722 507 0;
 #X obj 722 528 s \$0-stop-rcv;
 #X obj 659 439 sel 0;
-#X obj 404 212 r \$0-ro;
-#X msg 401 237 ro;
-#X msg 351 232 rw;
-#X obj 354 207 r \$0-rw;
-#X connect 1 0 52 0;
+#X msg 384 244 ro;
+#X msg 353 246 rw;
+#X obj 724 89 s \$0-stoplight-rcv;
+#X obj 728 118 r \$0-stoplight-snd;
+#X msg 728 140 0;
+#X obj 404 433 route ro rw;
+#X msg 403 453 1;
+#X msg 433 453 0;
+#X msg 419 478 set \$1;
+#X obj 356 220 sel 0 1;
+#X msg 518 468 set 0;
+#X obj 436 509 s \$0-rorw-rcv;
+#X obj 356 198 r \$0-rorw-snd;
+#X msg 475 467 set 1;
+#X obj 541 423 print;
+#X obj 405 412 route rorw;
+#X obj 250 423 route speed light bouge;
+#X connect 1 0 46 0;
 #X connect 2 0 1 0;
-#X connect 3 0 31 0;
+#X connect 3 0 25 0;
 #X connect 4 0 3 0;
-#X connect 6 0 63 0;
+#X connect 6 0 57 0;
 #X connect 7 0 8 0;
 #X connect 8 0 9 0;
-#X connect 9 0 26 0;
+#X connect 9 0 20 0;
 #X connect 10 0 5 0;
-#X connect 11 0 10 0;
-#X connect 12 0 10 0;
-#X connect 13 0 15 0;
-#X connect 14 0 15 0;
-#X connect 15 0 5 0;
-#X connect 16 0 5 0;
-#X connect 18 0 24 0;
+#X connect 12 0 18 0;
+#X connect 13 0 12 0;
+#X connect 15 0 14 0;
+#X connect 16 0 14 0;
+#X connect 17 0 14 0;
+#X connect 18 0 21 0;
 #X connect 19 0 18 0;
-#X connect 21 0 20 0;
-#X connect 22 0 20 0;
-#X connect 23 0 20 0;
-#X connect 24 0 27 0;
-#X connect 25 0 24 0;
-#X connect 25 1 24 1;
-#X connect 26 0 25 0;
-#X connect 27 0 22 0;
-#X connect 27 1 23 0;
-#X connect 27 2 21 0;
-#X connect 28 0 53 0;
-#X connect 29 0 52 0;
+#X connect 19 1 18 1;
+#X connect 20 0 19 0;
+#X connect 21 0 16 0;
+#X connect 21 1 17 0;
+#X connect 21 2 15 0;
+#X connect 22 0 47 0;
+#X connect 23 0 46 0;
+#X connect 24 0 25 0;
+#X connect 25 0 5 0;
+#X connect 26 0 32 0;
+#X connect 27 0 5 0;
+#X connect 28 0 29 0;
+#X connect 29 0 30 0;
 #X connect 30 0 31 0;
-#X connect 31 0 5 0;
-#X connect 32 0 38 0;
-#X connect 33 0 5 0;
-#X connect 34 0 35 0;
-#X connect 35 0 36 0;
-#X connect 36 0 37 0;
-#X connect 37 0 43 0;
-#X connect 38 0 33 0;
-#X connect 38 1 39 0;
-#X connect 39 0 40 0;
-#X connect 39 0 88 0;
-#X connect 41 0 34 0;
-#X connect 41 1 51 0;
-#X connect 44 0 47 0;
-#X connect 45 0 35 0;
-#X connect 46 0 43 0;
-#X connect 47 0 48 0;
-#X connect 48 0 50 0;
-#X connect 49 0 42 0;
-#X connect 50 0 42 0;
-#X connect 51 0 47 0;
-#X connect 52 0 5 0;
-#X connect 53 0 41 0;
-#X connect 53 1 64 0;
-#X connect 54 0 6 0;
-#X connect 55 0 56 1;
-#X connect 56 0 61 0;
-#X connect 57 0 60 0;
-#X connect 58 0 59 0;
-#X connect 60 0 58 0;
-#X connect 61 0 5 0;
-#X connect 62 0 39 0;
-#X connect 63 0 56 0;
-#X connect 63 1 62 0;
-#X connect 64 0 46 0;
-#X connect 64 1 49 0;
-#X connect 64 2 67 0;
-#X connect 65 0 68 0;
-#X connect 66 0 65 0;
-#X connect 66 1 69 0;
-#X connect 66 1 58 0;
-#X connect 67 1 66 0;
-#X connect 69 0 59 0;
+#X connect 31 0 37 0;
+#X connect 32 0 27 0;
+#X connect 32 1 33 0;
+#X connect 33 0 34 0;
+#X connect 35 0 28 0;
+#X connect 35 1 45 0;
+#X connect 38 0 41 0;
+#X connect 39 0 29 0;
+#X connect 40 0 37 0;
+#X connect 41 0 42 0;
+#X connect 42 0 44 0;
+#X connect 43 0 36 0;
+#X connect 44 0 36 0;
+#X connect 45 0 41 0;
+#X connect 46 0 5 0;
+#X connect 47 0 35 0;
+#X connect 47 1 104 0;
+#X connect 47 2 103 0;
+#X connect 48 0 6 0;
+#X connect 49 0 50 1;
+#X connect 50 0 55 0;
+#X connect 51 0 54 0;
+#X connect 52 0 53 0;
+#X connect 54 0 52 0;
+#X connect 55 0 5 0;
+#X connect 56 0 33 0;
+#X connect 57 0 50 0;
+#X connect 57 1 56 0;
+#X connect 58 0 61 0;
+#X connect 59 0 58 0;
+#X connect 59 1 62 0;
+#X connect 59 1 52 0;
+#X connect 60 1 59 0;
+#X connect 62 0 53 0;
+#X connect 63 0 64 0;
+#X connect 63 0 73 0;
+#X connect 63 0 77 0;
+#X connect 64 0 5 0;
+#X connect 65 0 10 0;
+#X connect 66 0 67 0;
+#X connect 67 0 5 0;
+#X connect 68 0 69 0;
+#X connect 69 0 70 0;
 #X connect 70 0 71 0;
-#X connect 70 0 80 0;
-#X connect 70 0 84 0;
-#X connect 71 0 5 0;
-#X connect 72 0 16 0;
-#X connect 73 0 74 0;
-#X connect 74 0 5 0;
-#X connect 75 0 76 0;
-#X connect 76 0 77 0;
-#X connect 77 0 78 0;
-#X connect 78 0 79 0;
-#X connect 81 0 82 0;
-#X connect 82 0 85 0;
-#X connect 82 0 86 0;
-#X connect 84 0 87 0;
-#X connect 89 0 94 0;
-#X connect 90 1 91 0;
+#X connect 71 0 72 0;
+#X connect 74 0 75 0;
+#X connect 75 0 78 0;
+#X connect 75 0 79 0;
+#X connect 75 0 90 0;
+#X connect 77 0 80 0;
+#X connect 82 0 87 0;
+#X connect 83 1 84 0;
+#X connect 84 0 85 0;
+#X connect 85 0 86 0;
+#X connect 87 1 83 0;
+#X connect 88 0 5 0;
+#X connect 89 0 5 0;
 #X connect 91 0 92 0;
-#X connect 92 0 93 0;
-#X connect 94 1 90 0;
+#X connect 92 0 81 0;
+#X connect 93 0 94 0;
+#X connect 93 1 95 0;
+#X connect 94 0 96 0;
 #X connect 95 0 96 0;
-#X connect 96 0 5 0;
-#X connect 97 0 5 0;
-#X connect 98 0 97 0;
-#X restore 333 15 pd guts;
-#X obj 21 8 cnv 15 140 30 empty \$0-connected-can connecté 10 15 0
-14 -24198 -1 0;
-#X obj 65 416 hsl 200 30 -1 1 0 0 \$0-speed-snd \$0-speed-rcv vitesse_moteur:0%
-5 15 0 12 -261234 -1 -1 0 1;
-#X obj 65 460 hsl 200 30 0 1 0 0 \$0-light-snd \$0-light-rcv lumière:0%
+#X connect 96 0 99 0;
+#X connect 97 0 89 0;
+#X connect 97 1 88 0;
+#X connect 98 0 99 0;
+#X connect 100 0 97 0;
+#X connect 101 0 99 0;
+#X connect 103 0 93 0;
+#X connect 104 0 40 0;
+#X connect 104 1 43 0;
+#X connect 104 2 60 0;
+#X restore 625 461 pd guts;
+#X obj 52 428 hsl 200 30 0 1 0 0 \$0-light-snd \$0-light-rcv lumière:0%
 5 15 0 12 -260097 -1 -1 0 1;
-#X obj 24 416 bng 30 250 50 0 \$0-stop-snd \$0-stop-rcv STOP 1 15 0
-12 -258113 -1 -1;
-#X obj 23 139 seqb \$0 2;
-#X obj 275 416 tgl 30 0 \$0-bouge-snd \$0-bouge-rcv remue 1 15 0 10
+#X obj 258 394 tgl 30 0 \$0-bouge-snd \$0-bouge-rcv remue 1 15 0 10
 -191407 -1 -1 0 1;
-#X obj 310 416 hsl 100 30 0.2 1 0 0 \$0-bougeperiod-snd \$0-bougeperiod-rcv
-période:0.42s 5 15 0 12 -191407 -1 -1 0 1;
-#X obj 24 53 bng 30 250 50 0 \$0-stopSeq-snd \$0-stopSeq-rcv STOP 1
-15 0 12 -257985 -1 -1;
-#X obj 23 88 seqb \$0 1;
-#X obj 23 190 seqb \$0 3;
-#X obj 23 241 seqb \$0 4;
-#X obj 23 292 seqb \$0 5;
-#X obj 23 343 seqb \$0 6;
-#X obj 299 49 cnv 15 150 250 empty empty SON 50 12 0 14 -204786 -66577
-0;
-#X obj 310 71 sonb \$0 1;
-#X obj 309 273 tgl 30 0 \$0-sonLoop-snd \$0-sonLoop-rcv loop 1 15 0
-10 -4034 -1 -1 0 1;
-#X obj 344 273 bng 30 250 50 0 \$0-sonStop-snd \$0-sonStop-rcv STOP
-1 15 0 12 -4034 -1 -1;
-#X obj 309 121 sonb \$0 2;
-#X obj 309 172 sonb \$0 3;
-#X obj 309 223 sonb \$0 4;
-#X obj 307 311 bng 80 250 50 0 \$0-allstop-snd \$0-allstop-rcv ALL_STOP
-7 40 0 14 -258113 -1 -1;
-#X obj 347 459 bng 15 250 50 0 \$0-rw empty readwrite 17 7 0 10 -258113
--1 -1;
-#X obj 347 476 bng 15 250 50 0 \$0-ro empty readonly 17 7 0 10 -4034
--1 -1;
+#X obj 293 394 hsl 100 30 0.2 1 0 0 \$0-bougeperiod-snd \$0-bougeperiod-rcv
+période:0.26s 5 15 0 12 -191407 -1 -1 0 1;
+#X obj 13 393 bng 30 250 50 0 \$0-stop-snd \$0-stop-rcv STOP 1 15 0
+12 -258113 -1 -1;
+#X obj 405 368 bng 70 250 50 0 \$0-allstop-snd \$0-allstop-rcv ALL_STOP
+5 30 0 14 -258113 -1 -1;
+#X obj 545 424 hradio 30 1 0 2 \$0-rorw-snd \$0-rorw-rcv readwrite________readonly
+-75 23 0 14 -262144 -1 -1 0;
+#X obj 13 428 bng 30 250 50 0 \$0-stoplight-snd \$0-stoplight-rcv CUT
+5 15 0 12 -258113 -1 -1;
+#X obj 53 394 hsl 200 30 -1 1 0 0 \$0-speed-snd \$0-speed-rcv vitesse_moteur:0%
+5 15 0 12 -4034 -1 -1 9950 1;
+#X obj 513 366 cnv 15 140 30 empty \$0-connected-can connecté 10 15
+0 14 -24198 -1 0;

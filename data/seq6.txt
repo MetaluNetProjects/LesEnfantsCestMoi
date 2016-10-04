@@ -1,0 +1,8 @@
+1 MOTEUR 30 3 # à 1 seconde, moteur marche avant 30% en 3 seconde;
+5 MOTEUR 0;
+7 MOTEUR 30 3 # à 7 seconde, moteur marche avant 30% en 3 seconde;
+12 MOTEUR 0;
+14 MOTEUR 30 3 # à 14 seconde, moteur marche avant 30% en 3 seconde;
+19 MOTEUR 0;
+21 MOTEUR 30 3 # à 21 seconde, moteur marche avant 30% en 3 seconde;
+26 MOTEUR 0;
